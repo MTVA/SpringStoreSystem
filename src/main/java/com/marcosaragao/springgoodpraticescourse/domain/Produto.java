@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Categoria implements Serializable {
+public class Produto  implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -25,23 +25,32 @@ public class Categoria implements Serializable {
 
     @Getter
     @Setter
-    @ManyToMany(mappedBy = "categorias")
-    List<Produto> produtos = new ArrayList<>();
+    private Double preco;
 
-    public Categoria() {
+    @Getter
+    @Setter
+    @ManyToMany
+    @JoinTable(name = "PRODUTO_CATEGORIA",
+    joinColumns = @JoinColumn(name = "produto_id"),
+    inverseJoinColumns = @JoinColumn(name = "categoria_id")
+    )
+    List<Categoria> categorias = new ArrayList<>();
+
+    public Produto(){
+
     }
 
-    public Categoria(Integer id, String nome) {
-        this.id = id;
+    public Produto(Integer id, String nome, Double preco) {
         this.nome = nome;
+        this.preco = preco;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Categoria categoria = (Categoria) o;
-        return Objects.equals(id, categoria.id);
+        Produto produto = (Produto) o;
+        return id.equals(produto.id);
     }
 
     @Override
