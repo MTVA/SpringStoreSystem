@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value= URIs.CATEGORIAS)
+@RequestMapping(value = URIs.CATEGORIAS)
 public class CategoriaResource {
 
     @RequestMapping(method = RequestMethod.GET)
