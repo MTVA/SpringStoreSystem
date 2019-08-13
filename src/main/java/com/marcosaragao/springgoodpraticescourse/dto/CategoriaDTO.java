@@ -4,12 +4,15 @@ import com.marcosaragao.springgoodpraticescourse.domain.Categoria;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.Size;
+
 public class CategoriaDTO {
 
     @Getter
     @Setter
     private Integer id;
 
+    @Size(min=2)
     @Getter
     @Setter
     private String nome;
