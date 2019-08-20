@@ -14,10 +14,10 @@ import java.util.Objects;
 public class Categoria implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
     @Getter
@@ -26,9 +26,8 @@ public class Categoria implements Serializable {
 
     @Getter
     @Setter
-    @JsonManagedReference
-    @ManyToMany(mappedBy = "categorias")
-    List<Produto> produtos = new ArrayList<>();
+    @ManyToMany(mappedBy="categorias")
+    private List<Produto> produtos = new ArrayList<>();
 
     public Categoria() {
     }

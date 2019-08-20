@@ -26,4 +26,8 @@ public class CategoriaService {
         PageRequest pageRequest = new PageRequest(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
         return categoriaRepository.findAll(pageRequest);
     }
+
+    public Categoria insert(Categoria obj){
+        return categoriaRepository.save(obj);
+    }
 }
