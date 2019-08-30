@@ -3,8 +3,10 @@ package com.marcosaragao.springgoodpraticescourse.domain;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +24,14 @@ public class Categoria implements Serializable {
 
     @Getter
     @Setter
+    @NotEmpty(message = "Campo de preenchimento obrigatorio")
+    @Length(min = 1, max = 80, message = "O tamanho deve ser entre 5 e 80 caracteres")
     private String nome;
 
     @Getter
     @Setter
-    @ManyToMany(mappedBy="categorias")
+    @ManyToMany(mappedBy="categorias", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Produto> produtos = new ArrayList<>();
 
     public Categoria() {
