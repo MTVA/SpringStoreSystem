@@ -1,4 +1,4 @@
-package com.marcosaragao.springgoodpraticescourse.repositories;
+package com.marcosaragao.springgoodpraticescourse.repositories.old;
 
 import com.marcosaragao.springgoodpraticescourse.domain.old.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;

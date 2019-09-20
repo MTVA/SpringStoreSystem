@@ -1,8 +1,8 @@
 package com.marcosaragao.springgoodpraticescourse.services;
 
 import com.marcosaragao.springgoodpraticescourse.domain.old.Categoria;
-import com.marcosaragao.springgoodpraticescourse.repositories.CategoriaRepository;
-import com.marcosaragao.springgoodpraticescourse.repositories.ProdutoRepository;
+import com.marcosaragao.springgoodpraticescourse.repositories.old.CategoriaRepository;
+import com.marcosaragao.springgoodpraticescourse.repositories.old.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
