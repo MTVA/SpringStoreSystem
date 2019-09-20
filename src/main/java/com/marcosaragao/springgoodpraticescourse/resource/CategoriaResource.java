@@ -1,19 +1,17 @@
 package com.marcosaragao.springgoodpraticescourse.resource;
 
-import com.marcosaragao.springgoodpraticescourse.domain.Categoria;
+import com.marcosaragao.springgoodpraticescourse.domain.old.Categoria;
 import com.marcosaragao.springgoodpraticescourse.dto.CategoriaDTO;
 import com.marcosaragao.springgoodpraticescourse.services.CategoriaService;
 import com.marcosaragao.springgoodpraticescourse.util.URIs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = URIs.CATEGORIAS)

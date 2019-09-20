@@ -1,7 +1,7 @@
 package com.marcosaragao.springgoodpraticescourse.services;
 
-import com.marcosaragao.springgoodpraticescourse.domain.Categoria;
-import com.marcosaragao.springgoodpraticescourse.domain.Produto;
+import com.marcosaragao.springgoodpraticescourse.domain.old.Categoria;
+import com.marcosaragao.springgoodpraticescourse.domain.old.Produto;
 import com.marcosaragao.springgoodpraticescourse.dto.CategoriaDTO;
 import com.marcosaragao.springgoodpraticescourse.repositories.ProdutoRepository;
 import com.marcosaragao.springgoodpraticescourse.services.exceptions.ObjectNotFoundException;

@@ -1,9 +1,9 @@
 package com.marcosaragao.springgoodpraticescourse;
 
-import com.marcosaragao.springgoodpraticescourse.domain.Categoria;
-import com.marcosaragao.springgoodpraticescourse.domain.Cidade;
-import com.marcosaragao.springgoodpraticescourse.domain.Estado;
-import com.marcosaragao.springgoodpraticescourse.domain.Produto;
+import com.marcosaragao.springgoodpraticescourse.domain.old.Categoria;
+import com.marcosaragao.springgoodpraticescourse.domain.old.Cidade;
+import com.marcosaragao.springgoodpraticescourse.domain.old.Estado;
+import com.marcosaragao.springgoodpraticescourse.domain.old.Produto;
 import com.marcosaragao.springgoodpraticescourse.repositories.CategoriaRepository;
 import com.marcosaragao.springgoodpraticescourse.repositories.CidadeRepository;
 import com.marcosaragao.springgoodpraticescourse.repositories.EstadoRepository;

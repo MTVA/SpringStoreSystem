@@ -1,4 +1,4 @@
-package com.marcosaragao.springgoodpraticescourse.domain;
+package com.marcosaragao.springgoodpraticescourse.domain.general;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,41 +8,41 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Cidade implements Serializable {
+public class Game implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Getter
     @Setter
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
     @Getter
     @Setter
-    private String nome;
+    @ManyToOne
+    @JoinColumn(name = "creator_id")
+    private Person creator;
 
     @Getter
     @Setter
     @ManyToOne
-    @JoinColumn(name = "estado_id")
-    private Estado estado;
+    @JoinColumn(name = "player_id")
+    private Person player;
 
-    public Cidade(){
-
+    public Game() {
     }
 
-    public Cidade(Integer id, String nome, Estado estado) {
-        this.id = id;
-        this.nome = nome;
-        this.estado = estado;
+    public Game(Person creator, Person player) {
+        this.creator = creator;
+        this.player = player;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Cidade cidade = (Cidade) o;
-        return id.equals(cidade.id);
+        Game categoria = (Game) o;
+        return Objects.equals(id, categoria.id);
     }
 
     @Override

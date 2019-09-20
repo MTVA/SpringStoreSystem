@@ -1,4 +1,4 @@
-package com.marcosaragao.springgoodpraticescourse.domain;
+package com.marcosaragao.springgoodpraticescourse.domain.old;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
