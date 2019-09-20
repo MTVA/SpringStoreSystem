@@ -1,5 +1,7 @@
 package com.marcosaragao.springgoodpraticescourse.domain.gameTree;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.marcosaragao.springgoodpraticescourse.domain.general.Game;
 import com.marcosaragao.springgoodpraticescourse.domain.general.Person;
 import lombok.Getter;
@@ -23,8 +25,11 @@ public class GameTree extends Game {
 
     @Getter
     @Setter
-    @OneToMany(mappedBy = "estado")
+    @JsonManagedReference
+    @OneToMany(mappedBy = "gameTree")
     private List<GameTreeRound> rounds = new ArrayList<>();
+
+
 
     public GameTree() {
     }

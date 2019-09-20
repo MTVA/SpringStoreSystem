@@ -1,5 +1,6 @@
 package com.marcosaragao.springgoodpraticescourse.domain.gameTree;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,15 +26,20 @@ public class GameTreeCombat implements Serializable {
 
     @Getter
     @Setter
+    @ManyToOne
+    @JoinColumn(name = "combatant1_id")
     private GameTreeCombatant combatant1;
 
     @Getter
     @Setter
+    @ManyToOne
+    @JoinColumn(name = "combatant2_id")
     private GameTreeCombatant combatant2;
 
     @Getter
     @Setter
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "gameTree_id")
     private GameTreeRound round;
 

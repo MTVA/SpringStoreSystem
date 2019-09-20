@@ -1,9 +1,7 @@
 package com.marcosaragao.springgoodpraticescourse.services;
 
-import com.marcosaragao.springgoodpraticescourse.domain.gameTree.GameTree;
-import com.marcosaragao.springgoodpraticescourse.domain.gameTree.GameTreeCombat;
-import com.marcosaragao.springgoodpraticescourse.domain.gameTree.GameTreeCombatant;
-import com.marcosaragao.springgoodpraticescourse.domain.gameTree.GameTreeRound;
+import com.marcosaragao.springgoodpraticescourse.domain.gameTree.*;
+import com.marcosaragao.springgoodpraticescourse.domain.general.Game;
 import com.marcosaragao.springgoodpraticescourse.domain.old.Categoria;
 import com.marcosaragao.springgoodpraticescourse.domain.old.Produto;
 import com.marcosaragao.springgoodpraticescourse.dto.CategoriaDTO;
@@ -43,21 +41,12 @@ public class GameTreeService {
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto nao encontrado. Id:" + id.toString()));
     }
 
-    public void populateDataBase(){
+    public GameTree playStep(GameTreeWinnerEnum winner){
+        //Optional<GameTree> gameTreeOptional = gameTreeRepository.findById(gameTreeId);
+        //GameTree gameTree = gameTreeOptional.get();
+        //if (gameTreeId == null)
+            return null;
 
-        GameTreeCombatant gameTreeCombatant1 = new GameTreeCombatant("Inception");
-        GameTreeCombatant gameTreeCombatant2 = new GameTreeCombatant("Interstellar");
-
-        GameTree gameTree = new GameTree(0, null);
-
-        GameTreeRound gameTreeRound = new GameTreeRound(0, gameTree);
-
-        GameTreeCombat gameTreeCombat = new GameTreeCombat(gameTreeCombatant1, gameTreeCombatant2, gameTreeRound);
-
-
-        gameTreeCombatantRepository.saveAll(Arrays.asList(gameTreeCombatant1, gameTreeCombatant2));
-        gameTreeRepository.save(gameTree);
-        gameTreeRoundRepository.save(gameTreeRound);
-        gameTreeCombatRepository.save(gameTreeCombat);
     }
+
 }

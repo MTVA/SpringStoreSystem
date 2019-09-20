@@ -1,9 +1,17 @@
 package com.marcosaragao.springgoodpraticescourse;
 
+import com.marcosaragao.springgoodpraticescourse.domain.gameTree.GameTree;
+import com.marcosaragao.springgoodpraticescourse.domain.gameTree.GameTreeCombat;
+import com.marcosaragao.springgoodpraticescourse.domain.gameTree.GameTreeCombatant;
+import com.marcosaragao.springgoodpraticescourse.domain.gameTree.GameTreeRound;
 import com.marcosaragao.springgoodpraticescourse.domain.old.Categoria;
 import com.marcosaragao.springgoodpraticescourse.domain.old.Cidade;
 import com.marcosaragao.springgoodpraticescourse.domain.old.Estado;
 import com.marcosaragao.springgoodpraticescourse.domain.old.Produto;
+import com.marcosaragao.springgoodpraticescourse.repositories.gameTree.GameTreeCombatRepository;
+import com.marcosaragao.springgoodpraticescourse.repositories.gameTree.GameTreeCombatantRepository;
+import com.marcosaragao.springgoodpraticescourse.repositories.gameTree.GameTreeRepository;
+import com.marcosaragao.springgoodpraticescourse.repositories.gameTree.GameTreeRoundRepository;
 import com.marcosaragao.springgoodpraticescourse.repositories.old.CategoriaRepository;
 import com.marcosaragao.springgoodpraticescourse.repositories.old.CidadeRepository;
 import com.marcosaragao.springgoodpraticescourse.repositories.old.EstadoRepository;
@@ -13,6 +21,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 @SpringBootApplication
@@ -26,6 +35,17 @@ public class SpringgoodpraticescourseApplication implements CommandLineRunner {
     private EstadoRepository estadoRepository;
     @Autowired
     private CidadeRepository cidadeRepository;
+    @Autowired
+    private GameTreeRepository gameTreeRepository;
+
+    @Autowired
+    private GameTreeCombatantRepository gameTreeCombatantRepository;
+
+    @Autowired
+    private GameTreeCombatRepository gameTreeCombatRepository;
+
+    @Autowired
+    private GameTreeRoundRepository gameTreeRoundRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(SpringgoodpraticescourseApplication.class, args);
@@ -34,38 +54,27 @@ public class SpringgoodpraticescourseApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Categoria cat1 = new Categoria(null, "Açao");
-        Categoria cat2 = new Categoria(null, "RPG");
-        Categoria cat3 = new Categoria(null, "Luta");
-        Categoria cat4 = new Categoria(null, "Futebol");
-        Categoria cat5 = new Categoria(null, "Mobile");
-        Categoria cat6 = new Categoria(null, "Demo");
+        GameTreeCombatant gameTreeCombatant1 = new GameTreeCombatant("Inception");
+        GameTreeCombatant gameTreeCombatant2 = new GameTreeCombatant("Interstellar");
 
-        Produto p1 = new Produto(null, "Computador", 2000.00);
-        Produto p2 = new Produto(null, "Impressora", 800.00);
-        Produto p3 = new Produto(null, "Mouse", 80.00);
+        GameTreeCombatant gameTreeCombatant3 = new GameTreeCombatant("Lion King");
+        GameTreeCombatant gameTreeCombatant4 = new GameTreeCombatant("Aladdin");
 
-        cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
-        cat2.getProdutos().addAll(Arrays.asList(p2));
+        GameTree gameTree = new GameTree(0, null);
+        GameTreeRound gameTreeRound = new GameTreeRound(0, gameTree);
+        GameTreeRound gameTreeRound2 = new GameTreeRound(0, gameTree);
 
-        p1.getCategorias().addAll(Arrays.asList(cat1));
-        p2.getCategorias().addAll(Arrays.asList(cat1, cat2));
-        p3.getCategorias().addAll(Arrays.asList(cat1));
+        GameTreeCombat gameTreeCombat = new GameTreeCombat(gameTreeCombatant1, gameTreeCombatant2, gameTreeRound);
+        GameTreeCombat gameTreeCombat2 = new GameTreeCombat(gameTreeCombatant3, gameTreeCombatant4, gameTreeRound);
 
-        categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6));
-        produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
+        gameTreeRound.setCombats(Arrays.asList(gameTreeCombat, gameTreeCombat2));
 
-        Estado est1 = new Estado(null, "Minas Gerais");
-        Estado est2 = new Estado(null, "São Paulo");
+        gameTree.setRounds(Arrays.asList(gameTreeRound, gameTreeRound2));
 
-        Cidade c1 = new Cidade(null, "Uberlândia", est1);
-        Cidade c2 = new Cidade(null, "São Paulo", est2);
-        Cidade c3 = new Cidade(null, "Campinas", est2);
 
-        est1.getCidades().addAll(Arrays.asList(c1));
-        est2.getCidades().addAll(Arrays.asList(c2, c3));
-
-        estadoRepository.saveAll(Arrays.asList(est1, est2));
-        cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
+        gameTreeCombatantRepository.saveAll(Arrays.asList(gameTreeCombatant1, gameTreeCombatant2, gameTreeCombatant3, gameTreeCombatant4));
+        gameTreeRepository.save(gameTree);
+        gameTreeRoundRepository.saveAll(Arrays.asList(gameTreeRound, gameTreeRound2));
+        gameTreeCombatRepository.saveAll(Arrays.asList(gameTreeCombat, gameTreeCombat2));
     }
 }

@@ -3,6 +3,10 @@ package com.marcosaragao.springgoodpraticescourse.domain.gameTree;
 public enum GameTreeWinnerEnum {
 
     /**
+     * Combat not yet fought
+     */
+    WAITING,
+    /**
      * COMBATANT1
      */
     COMBATANT1,
@@ -11,9 +15,4 @@ public enum GameTreeWinnerEnum {
      * COMBATANT2
      */
     COMBATANT2,
-
-    /**
-     * Combat not yet fought
-     */
-    WAITING,
 }
