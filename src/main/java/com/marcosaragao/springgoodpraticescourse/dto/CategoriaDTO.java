@@ -1,6 +1,6 @@
 package com.marcosaragao.springgoodpraticescourse.dto;
 
-import com.marcosaragao.springgoodpraticescourse.domain.old.Categoria;
+import com.marcosaragao.springgoodpraticescourse.domain.Categoria;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;

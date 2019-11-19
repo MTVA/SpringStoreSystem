@@ -1,6 +1,6 @@
 package com.marcosaragao.springgoodpraticescourse.resource;
 
-import com.marcosaragao.springgoodpraticescourse.domain.old.Categoria;
+import com.marcosaragao.springgoodpraticescourse.domain.Categoria;
 import com.marcosaragao.springgoodpraticescourse.dto.CategoriaDTO;
 import com.marcosaragao.springgoodpraticescourse.services.CategoriaService;
 import com.marcosaragao.springgoodpraticescourse.util.URIs;

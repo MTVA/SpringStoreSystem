@@ -1,11 +1,11 @@
 package com.marcosaragao.springgoodpraticescourse.services;
 
-import com.marcosaragao.springgoodpraticescourse.domain.old.Categoria;
-import com.marcosaragao.springgoodpraticescourse.domain.old.Produto;
+import com.marcosaragao.springgoodpraticescourse.domain.Categoria;
+import com.marcosaragao.springgoodpraticescourse.domain.Produto;
 import com.marcosaragao.springgoodpraticescourse.dto.CategoriaDTO;
-import com.marcosaragao.springgoodpraticescourse.repositories.old.ProdutoRepository;
+import com.marcosaragao.springgoodpraticescourse.repositories.ProdutoRepository;
 import com.marcosaragao.springgoodpraticescourse.services.exceptions.ObjectNotFoundException;
-import com.marcosaragao.springgoodpraticescourse.repositories.old.CategoriaRepository;
+import com.marcosaragao.springgoodpraticescourse.repositories.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

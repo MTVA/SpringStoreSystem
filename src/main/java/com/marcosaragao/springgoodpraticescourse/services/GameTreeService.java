@@ -1,24 +1,14 @@
 package com.marcosaragao.springgoodpraticescourse.services;
 
 import com.marcosaragao.springgoodpraticescourse.domain.gameTree.*;
-import com.marcosaragao.springgoodpraticescourse.domain.general.Game;
-import com.marcosaragao.springgoodpraticescourse.domain.old.Categoria;
-import com.marcosaragao.springgoodpraticescourse.domain.old.Produto;
-import com.marcosaragao.springgoodpraticescourse.dto.CategoriaDTO;
 import com.marcosaragao.springgoodpraticescourse.repositories.gameTree.GameTreeCombatRepository;
 import com.marcosaragao.springgoodpraticescourse.repositories.gameTree.GameTreeCombatantRepository;
 import com.marcosaragao.springgoodpraticescourse.repositories.gameTree.GameTreeRepository;
 import com.marcosaragao.springgoodpraticescourse.repositories.gameTree.GameTreeRoundRepository;
-import com.marcosaragao.springgoodpraticescourse.repositories.old.CategoriaRepository;
-import com.marcosaragao.springgoodpraticescourse.repositories.old.ProdutoRepository;
 import com.marcosaragao.springgoodpraticescourse.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.Optional;
 
 @Service

@@ -1,4 +1,4 @@
-package com.marcosaragao.springgoodpraticescourse.domain.old;
+package com.marcosaragao.springgoodpraticescourse.domain;
 
 import lombok.Getter;
 import lombok.Setter;
