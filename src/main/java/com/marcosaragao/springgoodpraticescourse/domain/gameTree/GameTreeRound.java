@@ -27,7 +27,7 @@ public class GameTreeRound implements Serializable {
 
     @Getter
     @Setter
-    @OneToMany(mappedBy = "round")
+    @OneToMany(mappedBy = "round", cascade = CascadeType.ALL)
     private List<GameTreeCombat> combats = new ArrayList<>();
 
     @Getter

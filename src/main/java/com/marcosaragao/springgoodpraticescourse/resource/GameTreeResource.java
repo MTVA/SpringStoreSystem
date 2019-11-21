@@ -1,7 +1,8 @@
 package com.marcosaragao.springgoodpraticescourse.resource;
 
 import com.marcosaragao.springgoodpraticescourse.domain.gameTree.GameTree;
-import com.marcosaragao.springgoodpraticescourse.domain.gameTree.GameTreeWinnerEnum;
+import com.marcosaragao.springgoodpraticescourse.dto.GameTreeCreateDTO;
+import com.marcosaragao.springgoodpraticescourse.dto.PlayStepDTO;
 import com.marcosaragao.springgoodpraticescourse.services.GameTreeService;
 import com.marcosaragao.springgoodpraticescourse.util.URIs;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,14 @@ public class GameTreeResource {
     @Autowired
     GameTreeService gameTreeService;
 
+    @RequestMapping(value="/create", method = RequestMethod.POST)
+    public ResponseEntity<?> createGame(@RequestBody GameTreeCreateDTO gameTreeCreateDTO){
+
+        GameTree obj = gameTreeService.createGame(gameTreeCreateDTO);
+
+        return ResponseEntity.ok().body(obj);
+    }
+
     @RequestMapping(value="/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable Integer id){
 
@@ -23,10 +32,10 @@ public class GameTreeResource {
         return ResponseEntity.ok().body(obj);
     }
 
-    @RequestMapping(value="/{winner}", method = RequestMethod.POST)
-    public ResponseEntity<?> playStep(@PathVariable GameTreeWinnerEnum winner){
+    @RequestMapping(value="/playstep", method = RequestMethod.POST)
+    public ResponseEntity<?> playStep(@RequestBody PlayStepDTO playStepDTO){
 
-        GameTree obj = gameTreeService.playStep(winner);
+        GameTree obj = gameTreeService.playStep(playStepDTO);
 
         return ResponseEntity.ok().body(obj);
     }

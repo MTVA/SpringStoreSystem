@@ -7,6 +7,7 @@ import com.marcosaragao.springgoodpraticescourse.domain.general.Person;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class GameTree extends Game {
     @Getter
     @Setter
     @JsonManagedReference
-    @OneToMany(mappedBy = "gameTree")
+    @OneToMany(mappedBy = "gameTree", cascade = CascadeType.ALL)
     private List<GameTreeRound> rounds = new ArrayList<>();
 
 
