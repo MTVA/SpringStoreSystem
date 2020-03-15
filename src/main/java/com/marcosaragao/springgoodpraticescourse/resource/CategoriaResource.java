@@ -6,9 +6,13 @@ import com.marcosaragao.springgoodpraticescourse.services.CategoriaService;
 import com.marcosaragao.springgoodpraticescourse.util.URIs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -70,4 +74,18 @@ public class CategoriaResource {
         return ResponseEntity.ok().body(categoriaDTO);
     }
 
+    @RequestMapping(method=RequestMethod.POST)
+    public ResponseEntity<Void> insert(@Valid @RequestBody CategoriaDTO objDTO) {
+        Categoria obj = categoriaService.fromDTO(objDTO);
+        obj = categoriaService.insert(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
+    @PostMapping(value = "/populate")
+    public ResponseEntity<Void> populateDatabase(){
+        categoriaService.populateDataBase();
+        return ResponseEntity.ok().body(null);
+    }
 }

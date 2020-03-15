@@ -1,6 +1,9 @@
 package com.marcosaragao.springgoodpraticescourse.services;
 
 import com.marcosaragao.springgoodpraticescourse.domain.Categoria;
+import com.marcosaragao.springgoodpraticescourse.domain.Produto;
+import com.marcosaragao.springgoodpraticescourse.dto.CategoriaDTO;
+import com.marcosaragao.springgoodpraticescourse.repositories.ProdutoRepository;
 import com.marcosaragao.springgoodpraticescourse.services.exceptions.ObjectNotFoundException;
 import com.marcosaragao.springgoodpraticescourse.repositories.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +12,21 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+<<<<<<< HEAD
 import java.util.*;
+=======
+import java.util.Arrays;
+import java.util.Optional;
+>>>>>>> 1b8cea046e6aa5376ff734f3755b3b302754703e
 
 @Service
 public class CategoriaService {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
+
+    @Autowired
+    private ProdutoRepository produtoRepository;
 
     public Categoria find(Integer id){
         Optional<Categoria> obj = categoriaRepository.findById(id);
@@ -27,5 +38,39 @@ public class CategoriaService {
         return categoriaRepository.findAll(pageRequest);
     }
 
+<<<<<<< HEAD
 
+=======
+    public Categoria insert(Categoria obj){
+        return categoriaRepository.save(obj);
+    }
+
+    public Categoria fromDTO(CategoriaDTO objDTO){
+        return new Categoria(objDTO.getId(), objDTO.getNome());
+    }
+
+    public void populateDataBase(){
+
+        Categoria cat1 = new Categoria(null, "Açao");
+        Categoria cat2 = new Categoria(null, "RPG");
+        Categoria cat3 = new Categoria(null, "Luta");
+        Categoria cat4 = new Categoria(null, "Futebol");
+        Categoria cat5 = new Categoria(null, "Mobile");
+        Categoria cat6 = new Categoria(null, "Demo");
+
+        Produto p1 = new Produto(null, "Computador", 2000.00);
+        Produto p2 = new Produto(null, "Impressora", 800.00);
+        Produto p3 = new Produto(null, "Mouse", 80.00);
+
+        cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
+        cat2.getProdutos().addAll(Arrays.asList(p2));
+
+        p1.getCategorias().addAll(Arrays.asList(cat1));
+        p2.getCategorias().addAll(Arrays.asList(cat1, cat2));
+        p3.getCategorias().addAll(Arrays.asList(cat1));
+
+        categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6));
+        produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
+    }
+>>>>>>> 1b8cea046e6aa5376ff734f3755b3b302754703e
 }
