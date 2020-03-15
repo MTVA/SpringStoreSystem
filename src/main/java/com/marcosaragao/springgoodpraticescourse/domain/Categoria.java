@@ -24,10 +24,10 @@ public class Categoria implements Serializable {
     @Setter
     private String nome;
 
-    @Getter
-    @Setter
     @JsonManagedReference
     @ManyToMany(mappedBy = "categorias")
+    @Getter
+    @Setter
     List<Produto> produtos = new ArrayList<>();
 
     public Categoria() {

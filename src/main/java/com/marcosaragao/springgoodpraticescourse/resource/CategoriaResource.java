@@ -23,6 +23,37 @@ public class CategoriaResource {
 
         Categoria obj = categoriaService.find(id);
 
+        //Dividir array em duas partes
+        int[] array = new int[6];
+        int[] arrayLeft = new int[array.length];
+        int[] arrayRight = new int[array.length];
+        for(int i=0;i<array.length;i++){
+            if(i<array.length/2){
+                arrayLeft[i] = array[i];
+            }
+            else{
+                arrayRight[i - array.length/2] = array[i];
+            }
+        }
+
+        //Ver elementos de um array
+        System.out.print("Lista - ");
+        for(int i=0;i<array.length;i++){
+            System.out.print(array[i] + " ");
+        }
+        System.out.println("");
+
+        //Ver Matriz
+        int[][] matriz = new int[4][4];
+        for(int i=0;i<4;i++){
+            for(int j=0;j<4;j++){
+                System.out.print(matriz[i][j]);
+            }
+            System.out.println("");
+        }
+
+
+
         return ResponseEntity.ok().body(obj);
     }
 
